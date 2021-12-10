@@ -66,8 +66,10 @@ Every data record contains information on the failure and the failure mode.
 In this notebook we try to predict, which failure mode applies to a given record.
 
 To this end we chose a subset of features of the dataset and use:
-1. a decisiontree 
-2. a random forrest
+1. a decisiontree / random forrest (this branch)
+2. boosted tree (see corresponding branch)
+3. support vector machine (see corresponding branch)
+4. OPEN: make an ensemble of 1-3
 
 ## Plan: ##
 1. enhance the failue modes by a new one: NOF - no failure. Thus a predictor has the possibility to move probability mass to this mode in case of no failure.
