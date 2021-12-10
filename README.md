@@ -1,8 +1,4 @@
-# Predictive_Maintenance_UCI_Modes
-AI4I 2020 Predictive Maintenance Dataset Data Set -- Predicting Failure Modes
-
-
-# Random Forrest --- predict Failure Mode #
+# Predictive_Maintenance_UCI_Modes #
 # UCI dataset "AI4I 2020 Predictive Maintenance Dataset Data Set" #
 
 Online-Source [here](https://archive.ics.uci.edu/ml/datasets/AI4I+2020+Predictive+Maintenance+Dataset#)
@@ -70,14 +66,19 @@ To this end we chose a subset of features of the dataset and use:
 2. boosted tree (see corresponding branch)
 3. support vector machine (see corresponding branch)
 4. OPEN: make an ensemble of 1-3
+<br>
 
-## Plan: ##
-1. enhance the failue modes by a new one: NOF - no failure. Thus a predictor has the possibility to move probability mass to this mode in case of no failure.
-2. construct a random forrest 
-3. determine the best size of the forrest measured by AUC
+# Other things I tried: #
+1. I tried a (pytorch) RNN to treat this data-set as a time-series - but it did not work well: time dependency of the records is not to obvious, there is little change in the feature-values over time until we more or less "suddenly" have a failure -- at least this seems to be the case after manual inspection of the dataset and for now serves as an explanation for me, why the RNN did not work.<br>
+2. I tried a fully connected dense NN (again using pytorch) but could not fix the problem of the unbalance of the dataset: failures are a seldom event.
 
+# Means: #
+1. I enhanced the failue modes by a new one: NOF - no failure. Thus a predictor has the possibility to move probability mass to this mode in case of no failure.
+2. there are very rare instances of combined failuremodes occuring (less than 10) - I introduced a mode "mixed mode" to avoid inflating the confusion-matrices by all possible 
+ combined modes.
 
-# Accuracy is not the correct metric #
-Machine failure is a rare event, i.e. accuracy is no meaningful performace-measure since a classifier allways predicting "No Machine Failure" will have a high accurcy without being usefull at all.<br>
+# Note: #
+Accuracy is not the correct metric <br>
+ Machine failure is a rare event, i.e. accuracy is no meaningful performace-measure since a classifier allways predicting "No Machine Failure" will have a high accurcy without being usefull at all.<br>
 We use:<br>
 + AUC area under (ROC) curve ---
